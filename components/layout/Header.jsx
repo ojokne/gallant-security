@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { VisuallyHidden } from "@/components/common/visually-hidden";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import ScrollProgressBar from "../common/scroll-progress-bar";
 
 export default function Header() {
   const pathname = usePathname();
@@ -29,6 +30,8 @@ export default function Header() {
 
   return (
     <header className="border-b sticky top-0 bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60 z-50">
+            <ScrollProgressBar />
+
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
         <Link 
           href="/" 
