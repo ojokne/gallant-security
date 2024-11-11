@@ -91,43 +91,68 @@ export default function Header() {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-            <SheetHeader>
-              <SheetTitle>
-                <VisuallyHidden>
-                  Navigation Menu
-                </VisuallyHidden>
-              </SheetTitle>
+          <SheetContent side="right" className="w-[300px] sm:w-[400px] p-0">
+            <SheetHeader className="sr-only">
+              <SheetTitle>Navigation Menu</SheetTitle>
             </SheetHeader>
-            <nav className="flex flex-col gap-4">
-              {navItems.map((item) => {
-                const isActive = 
-                  item.href === '/' 
-                    ? pathname === '/' 
-                    : pathname.startsWith(item.href);
+            <div className="h-full flex flex-col">
+              {/* Mobile Menu Header */}
+              <div className="p-6 border-b">
+                <Link 
+                  href="/" 
+                  className="flex items-center gap-2"
+                >
+                  <Image 
+                    src="/logo.png" 
+                    alt="Gallant Security Logo" 
+                    width={32} 
+                    height={32}
+                    className="object-contain"
+                  />
+                  <span className="font-bold text-lg tracking-tight">
+                    Gallant Security
+                  </span>
+                </Link>
+              </div>
 
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      "text-lg font-medium p-2 rounded-md transition-colors",
-                      "hover:bg-accent hover:text-accent-foreground",
-                      isActive && "bg-accent text-accent-foreground"
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-              <div className="mt-4 pt-4 border-t">
-                <Button asChild className="w-full">
+              {/* Navigation Links */}
+              <nav className="flex-1 overflow-y-auto">
+                <div className="p-6">
+                  {navItems.map((item) => {
+                    const isActive = 
+                      item.href === '/' 
+                        ? pathname === '/' 
+                        : pathname.startsWith(item.href);
+
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={cn(
+                          "flex items-center h-11 px-3",
+                          "text-sm font-medium tracking-tight rounded-md transition-colors",
+                          "hover:bg-accent/50",
+                          isActive 
+                            ? "text-primary bg-primary/5" 
+                            : "text-muted-foreground hover:text-primary"
+                        )}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </nav>
+
+              {/* Mobile Menu Footer */}
+              <div className="p-6 border-t bg-muted/30">
+                <Button asChild className="w-full font-medium text-sm">
                   <Link href="/contact">
                     Get Started
                   </Link>
                 </Button>
               </div>
-            </nav>
+            </div>
           </SheetContent>
         </Sheet>
       </div>
