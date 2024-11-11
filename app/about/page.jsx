@@ -400,7 +400,7 @@ export default function AboutPage() {
                       src={partner.logo}
                       alt={partner.name}
                       fill
-                      className="object-contain filter grayscale hover:grayscale-0 transition-all rounded-full"
+                      className="object-contain filter  transition-all rounded-full"
                     />
                   </div>
                 </motion.div>
