@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import NextTopLoader from 'nextjs-toploader';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="relative">
       <body className={`${geistSans.variable} min-h-screen flex flex-col relative`}>
+        <NextTopLoader color="#ff007f" zIndex={9999} />
         <Header />
         <main className="flex-grow relative">
           {children}
