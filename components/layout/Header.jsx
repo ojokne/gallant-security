@@ -13,10 +13,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { VisuallyHidden } from "@/components/common/visually-hidden";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 export default function Header() {
   const pathname = usePathname();
-  
+  const [open, setOpen] = useState(false);
+
   const navItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
@@ -84,7 +86,7 @@ export default function Header() {
         </nav>
 
         {/* Mobile Navigation */}
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon" className="h-8 w-8">
               <Menu className="h-5 w-5" />
@@ -132,6 +134,7 @@ export default function Header() {
                       <Link
                         key={item.href}
                         href={item.href}
+                        onClick={() => setOpen(false)}
                         className={cn(
                           "flex items-center h-11 px-3",
                           "text-sm font-medium tracking-tight rounded-md transition-colors",
@@ -150,7 +153,11 @@ export default function Header() {
 
               {/* Mobile Menu Footer */}
               <div className="p-6 border-t bg-muted/30">
-                <Button asChild className="w-full font-medium text-sm">
+                <Button 
+                  asChild 
+                  className="w-full font-medium text-sm"
+                  onClick={() => setOpen(false)}
+                >
                   <Link href="/contact">
                     Get Started
                   </Link>
