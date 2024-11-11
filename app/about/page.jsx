@@ -3,6 +3,40 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Shield, Target, Rocket, Users, CheckCircle2 } from "lucide-react";
 
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
+const stagger = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const slideIn = {
+  hidden: { x: -60, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
 const partners = [
   { name: "Partner 1", logo: "/partners/partner1.jpg" },
   { name: "Partner 2", logo: "/partners/partner1.jpg" },
@@ -18,7 +52,6 @@ export default function AboutPage() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/security-team.jpg"
@@ -27,44 +60,49 @@ export default function AboutPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 bg-black/60" 
+          />
         </div>
 
         {/* Content */}
         <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
           className="container mx-auto px-6 relative z-10 py-24"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
         >
-          <div className="max-w-3xl">
+          <motion.div variants={fadeIn} className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Securing Your World Since 2018
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8">
               We are among the leading organizations in the provision of
-              security services, making the protection of life, property, and
-              operations our top priority.
+              security services.
             </p>
-          </div>
-        </motion.div>
-
-        {/* Optional: Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <div className="w-[2px] h-[64px] bg-white/20 relative">
-            <div className="absolute top-0 left-0 w-full h-1/3 bg-white" />
-          </div>
+          </motion.div>
         </motion.div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 bg-primary text-primary-foreground">
+      <motion.section 
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-12 bg-primary text-primary-foreground"
+      >
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <motion.div 
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          >
             {[
               { number: "5+", label: "Years Experience" },
               { number: "500+", label: "Trained Guards" },
@@ -73,11 +111,8 @@ export default function AboutPage() {
             ].map((stat, index) => (
               <motion.div
                 key={index}
+                variants={fadeIn}
                 className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
               >
                 <div className="text-3xl md:text-4xl font-bold mb-2">
                   {stat.number}
@@ -87,29 +122,33 @@ export default function AboutPage() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Core Values Section */}
-      <section className="py-24">
+      <motion.section 
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24"
+      >
         <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl font-bold mb-4">Our Core Values</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <motion.div variants={stagger} className="text-center mb-16">
+            <motion.h2 variants={fadeIn} className="text-3xl font-bold mb-4">
+              Our Core Values
+            </motion.h2>
+            <motion.p variants={fadeIn} className="text-muted-foreground max-w-2xl mx-auto">
               At Gallant Security Limited, our daily operations are based on our
-              fundamental corporate values that define who we are and how we
-              work.
-            </p>
+              fundamental corporate values.
+            </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <motion.div 
+            variants={stagger}
+            className="grid grid-cols-1 md:grid-cols-4 gap-8"
+          >
             {[
               { icon: Shield, title: "Responsibility" },
               { icon: Users, title: "Entrepreneurship" },
@@ -118,30 +157,33 @@ export default function AboutPage() {
             ].map((value, index) => (
               <motion.div
                 key={index}
+                variants={fadeIn}
                 className="p-6 rounded-lg bg-muted/50 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
               >
                 <value.icon className="h-12 w-12 mx-auto mb-4 text-primary" />
                 <h3 className="font-semibold mb-2">{value.title}</h3>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Vision & Mission */}
-      <section className="py-24 bg-muted/50">
+      <motion.section 
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-muted/50"
+      >
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <motion.div
-              className="p-8 rounded-lg bg-background"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
+              className="p-8 rounded-lg bg-background"
             >
               <Target className="h-10 w-10 text-primary mb-4" />
               <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
@@ -153,11 +195,11 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              className="p-8 rounded-lg bg-background"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
+              className="p-8 rounded-lg bg-background"
             >
               <Rocket className="h-10 w-10 text-primary mb-4" />
               <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
@@ -168,17 +210,23 @@ export default function AboutPage() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Director's Message */}
-      <section className="py-24">
+      <motion.section 
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24"
+      >
         <div className="container mx-auto px-6">
           <motion.div
-            className="max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
           >
             <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-12">
               <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg">
@@ -213,26 +261,31 @@ export default function AboutPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Service Standards with Animation */}
-      <section className="py-24 bg-muted/50">
+      <motion.section 
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-muted/50"
+      >
         <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl font-bold mb-4">Service Standards</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <motion.div variants={stagger} className="text-center mb-16">
+            <motion.h2 variants={fadeIn} className="text-3xl font-bold mb-4">
+              Service Standards
+            </motion.h2>
+            <motion.p variants={fadeIn} className="text-muted-foreground max-w-2xl mx-auto">
               We maintain the highest standards of service delivery through our
               comprehensive approach.
-            </p>
+            </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div 
+            variants={stagger}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
             {[
               "Determine client expectations and requirements",
               "Analyze needs and develop service objectives",
@@ -243,11 +296,8 @@ export default function AboutPage() {
             ].map((standard, index) => (
               <motion.div
                 key={index}
+                variants={fadeIn}
                 className="p-6 rounded-lg bg-background"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
               >
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -257,37 +307,38 @@ export default function AboutPage() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Team Section */}
-      <section className="py-24">
+      <motion.section 
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24"
+      >
         <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl font-bold mb-4">Our Leadership Team</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <motion.div variants={stagger} className="text-center mb-16">
+            <motion.h2 variants={fadeIn} className="text-3xl font-bold mb-4">
+              Our Leadership Team
+            </motion.h2>
+            <motion.p variants={fadeIn} className="text-muted-foreground max-w-2xl mx-auto">
               Meet the experienced professionals leading our security operations.
-            </p>
+            </motion.p>
           </motion.div>
 
-          {/* Centered flex container */}
-          <div className="flex justify-center">
+          <motion.div 
+            variants={stagger}
+            className="flex justify-center"
+          >
             <div className="flex flex-wrap justify-center gap-12 max-w-4xl">
               {team.map((member, index) => (
                 <motion.div
                   key={index}
+                  variants={fadeIn}
                   className="text-center w-full md:w-auto"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
                 >
                   <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden
                                 ring-2 ring-primary/10 ring-offset-2 ring-offset-background
@@ -309,35 +360,39 @@ export default function AboutPage() {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Partners Section */}
-      <section className="py-24 bg-muted/50">
+      <motion.section 
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-24 bg-muted/50"
+      >
         <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl font-bold mb-4">Our Trusted Partners</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <motion.div variants={stagger} className="text-center mb-16">
+            <motion.h2 variants={fadeIn} className="text-3xl font-bold mb-4">
+              Our Trusted Partners
+            </motion.h2>
+            <motion.p variants={fadeIn} className="text-muted-foreground max-w-2xl mx-auto">
               Working with leading organizations to deliver exceptional security services.
-            </p>
+            </motion.p>
           </motion.div>
 
-          {/* Centered flex container */}
-          <div className="flex justify-center">
+          <motion.div 
+            variants={stagger}
+            className="flex justify-center"
+          >
             <div className="flex flex-wrap justify-center gap-12 max-w-4xl">
               {partners.map((partner, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  variants={fadeIn}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true }}
                 >
                   <div className="relative w-32 h-32 md:w-40 md:h-40 hover:scale-105 transition-transform">
@@ -351,9 +406,9 @@ export default function AboutPage() {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 }
