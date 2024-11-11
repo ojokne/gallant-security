@@ -31,10 +31,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} min-h-screen flex flex-col`}>
+    <html lang="en" className="relative">
+      <body className={`${geistSans.variable} min-h-screen flex flex-col relative`}>
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow relative">
           {children}
         </main>
         <Footer />
