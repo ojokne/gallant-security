@@ -92,8 +92,12 @@ export default function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px] p-0">
-            <SheetHeader className="sr-only">
-              <SheetTitle>Navigation Menu</SheetTitle>
+            <SheetHeader>
+              <SheetTitle>
+                <VisuallyHidden>
+                  Navigation Menu
+                </VisuallyHidden>
+              </SheetTitle>
             </SheetHeader>
             <div className="h-full flex flex-col">
               {/* Mobile Menu Header */}
