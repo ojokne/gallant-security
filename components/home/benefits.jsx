@@ -6,18 +6,19 @@ export function Benefits() {
     {
       icon: Shield,
       title: "Trained Professionals",
-      description: "Our security personnel undergo rigorous training and certification"
+      description:
+        "Our security personnel undergo rigorous training and certification",
     },
     {
       icon: Clock,
       title: "24/7 Availability",
-      description: "Round-the-clock security services and rapid response times"
+      description: "Round-the-clock security services and rapid response times",
     },
     {
       icon: BadgeCheck,
       title: "Licensed & Insured",
-      description: "Fully compliant with all state and federal regulations"
-    }
+      description: "Fully compliant with all state and federal regulations",
+    },
   ];
 
   return (
@@ -28,12 +29,26 @@ export function Benefits() {
             <h2 className="text-3xl font-bold mb-6">
               Why Leading Businesses Trust Us
             </h2>
-            <div className="space-y-6">
+            <div className="space-y-8">
               {benefits.map((benefit) => (
-                <div key={benefit.title} className="flex gap-4">
-                  <div className="flex-shrink-0 text-primary">
-                    <benefit.icon className="h-6 w-6" />
+                <div key={benefit.title} className="flex gap-4 group">
+                  {/* <div className="flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full  flex items-center justify-center bg-primary/10">
+                      <benefit.icon className="h-6 w-6 text-primary" />
+                    </div>
+                  </div> */}
+
+                   <div className="relative flex-shrink-0">
+                    {/* Animated background */}
+                    <div className="absolute inset-0">
+                      <div className="w-12 h-12 rounded-full bg-primary/50 animate-circle-pulse origin-center" />
+                    </div>
+                    {/* Static icon container */}
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center relative z-10">
+                      <benefit.icon className="h-6 w-6 text-primary" />
+                    </div>
                   </div>
+
                   <div>
                     <h3 className="font-semibold mb-2">{benefit.title}</h3>
                     <p className="text-muted-foreground">
@@ -45,7 +60,7 @@ export function Benefits() {
             </div>
           </div>
           <div className="relative aspect-square">
-            <Image 
+            <Image
               src="/security-team.jpg"
               alt="Our security team in action"
               fill
@@ -56,4 +71,4 @@ export function Benefits() {
       </div>
     </section>
   );
-} 
+}
