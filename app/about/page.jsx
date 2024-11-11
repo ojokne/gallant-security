@@ -3,6 +3,16 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Shield, Target, Rocket, Users, CheckCircle2 } from "lucide-react";
 
+const partners = [
+  { name: "Partner 1", logo: "/partners/partner1.jpg" },
+  { name: "Partner 2", logo: "/partners/partner1.jpg" },
+  { name: "Partner 3", logo: "/partners/partner1.jpg" },
+];
+
+const team = [
+  { name: "John Doe", position: "Managing Director", image: "/team/team1.jpg" },
+];
+
 export default function AboutPage() {
   return (
     <main className="flex-1">
@@ -247,6 +257,100 @@ export default function AboutPage() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl font-bold mb-4">Our Leadership Team</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Meet the experienced professionals leading our security operations.
+            </p>
+          </motion.div>
+
+          {/* Centered flex container */}
+          <div className="flex justify-center">
+            <div className="flex flex-wrap justify-center gap-12 max-w-4xl">
+              {team.map((member, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center w-full md:w-auto"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden
+                                ring-2 ring-primary/10 ring-offset-2 ring-offset-background
+                                group-hover:ring-primary/30 transition-all">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover transition-transform group-hover:scale-105"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold">{member.name}</h3>
+                  <p className="text-primary mb-2">{member.position}</p>
+                  {member.description && (
+                    <p className="text-muted-foreground text-sm max-w-sm">
+                      {member.description}
+                    </p>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section className="py-24 bg-muted/50">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl font-bold mb-4">Our Trusted Partners</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Working with leading organizations to deliver exceptional security services.
+            </p>
+          </motion.div>
+
+          {/* Centered flex container */}
+          <div className="flex justify-center">
+            <div className="flex flex-wrap justify-center gap-12 max-w-4xl">
+              {partners.map((partner, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="relative w-32 h-32 md:w-40 md:h-40 hover:scale-105 transition-transform">
+                    <Image
+                      src={partner.logo}
+                      alt={partner.name}
+                      fill
+                      className="object-contain filter grayscale hover:grayscale-0 transition-all rounded-full"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
