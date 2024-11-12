@@ -28,7 +28,7 @@ export default function DirectorMessage() {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <h2 className="text-3xl font-bold mb-6">Director's Message</h2>
+              <h2 className="text-3xl font-bold mb-6">Director&apos;s Message</h2>
               <div className="mb-6">
                 <h3 className="text-xl font-semibold">John Doe</h3>
                 <p className="text-muted-foreground">Managing Director</p>
@@ -43,7 +43,7 @@ export default function DirectorMessage() {
                 </p>
                 <p>
                   Through this approach we have delivered a service that exceeds
-                  our clients' needs and thus offers value for money.
+                  our clients&apos; needs and thus offers value for money.
                 </p>
               </div>
             </motion.div>

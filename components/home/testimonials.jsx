@@ -115,7 +115,7 @@ export function Testimonials() {
                     </div>
                   </div>
                 </div>
-                <p className="text-muted-foreground">"{testimonial.quote}"</p>
+                <p className="text-muted-foreground">{testimonial.quote}</p>
               </div>
             ))}
           </div>
