@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero-bg.jpg"
+          src="/security-team.jpg"
           alt="Security professionals in action"
           fill
           className="object-cover"
@@ -19,7 +19,7 @@ export default function Hero() {
           sizes="(max-width: 768px) 100vw, 100vw"
           quality={50}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/70 to-gray-800/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/60" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 py-24 sm:py-32">
