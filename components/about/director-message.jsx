@@ -6,8 +6,8 @@ export default function DirectorMessage() {
     return <div className="py-24">
     <div className="container mx-auto px-6">
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="max-w-4xl mx-auto"

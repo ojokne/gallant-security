@@ -15,8 +15,8 @@ export function CoreValues() {
     <div className="py-24">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
@@ -32,8 +32,8 @@ export function CoreValues() {
           {values.map((value, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="p-6 rounded-lg bg-muted/50 text-center group hover:bg-muted/80 transition-all duration-500"
