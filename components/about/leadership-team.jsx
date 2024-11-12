@@ -1,6 +1,11 @@
 // React Server Components
 import * as motion from "framer-motion/client";
 import Image from "next/image";
+import {
+  containerVariants,
+  itemVariants,
+  fadeInVariants,
+} from "@/lib/animation-variants";
 
 const team = [
   { name: "John Doe", position: "Managing Director", image: "/team/team1.jpg" },
@@ -11,10 +16,10 @@ export function LeadershipTeam() {
     <div className="py-24">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl font-bold mb-4">Our Leadership Team</h2>
@@ -23,15 +28,18 @@ export function LeadershipTeam() {
           </p>
         </motion.div>
 
-        <div className="flex justify-center">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex justify-center"
+        >
           <div className="flex flex-wrap justify-center gap-12 max-w-4xl">
             {team.map((member, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                variants={itemVariants}
                 className="text-center w-full md:w-auto group"
               >
                 <div
@@ -51,7 +59,7 @@ export function LeadershipTeam() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,5 +1,10 @@
 // React Server Components
 import * as motion from "framer-motion/client";
+import {
+  containerVariants,
+  itemVariants,
+  fadeInVariants,
+} from "@/lib/animation-variants";
 
 const stats = [
   { number: "5+", label: "Years Experience" },
@@ -11,15 +16,18 @@ const stats = [
 export function Stats() {
   return (
     <div className="py-12 bg-primary text-primary-foreground">
-      <div className="container mx-auto px-6">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="container mx-auto px-6"
+      >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={itemVariants}
               className="text-center"
             >
               <div className="text-3xl md:text-4xl font-bold mb-2">
@@ -31,7 +39,7 @@ export function Stats() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
-} 
+}
