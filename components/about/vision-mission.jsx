@@ -7,13 +7,10 @@ export default function VisionMission() {
     <div className="container mx-auto px-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{
-            duration: 0.7,
-            ease: [0.04, 0.62, 0.23, 0.98],
-          }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="p-8 rounded-lg bg-background group hover:bg-gradient-to-br hover:from-primary/5 hover:to-accent/5 transition-all duration-500"
         >
           <Target className="h-10 w-10 text-primary mb-4 group-hover:scale-110 transition-transform duration-500" />
@@ -26,14 +23,10 @@ export default function VisionMission() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{
-            duration: 0.7,
-            ease: [0.04, 0.62, 0.23, 0.98],
-            delay: 0.2,
-          }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="p-8 rounded-lg bg-background group hover:bg-gradient-to-br hover:from-primary/5 hover:to-accent/5 transition-all duration-500"
         >
           <Rocket className="h-10 w-10 text-primary mb-4 group-hover:scale-110 transition-transform duration-500" />

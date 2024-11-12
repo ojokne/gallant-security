@@ -13,13 +13,10 @@ export function Partners() {
     <div className="py-24 bg-muted/50">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{
-            duration: 0.7,
-            ease: [0.04, 0.62, 0.23, 0.98],
-          }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl font-bold mb-4">Our Trusted Partners</h2>
@@ -34,14 +31,10 @@ export function Partners() {
             {partners.map((partner, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{
-                  duration: 0.7,
-                  ease: [0.04, 0.62, 0.23, 0.98],
-                  delay: index * 0.15,
-                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
                 <div className="relative  md:w-24 md:h-24 transition-transform duration-500 group-hover:scale-105">
