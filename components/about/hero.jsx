@@ -1,6 +1,7 @@
 import Image from "next/image";
 // React Server Components
 import * as motion from "framer-motion/client";
+import HeroOverlay from "../common/hero-overlay";
 
 export function Hero() {
   return (
@@ -13,15 +14,7 @@ export function Hero() {
           className="object-cover"
           priority
         />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 1.2,
-            ease: "easeOut",
-          }}
-          className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50"
-        />
+        <HeroOverlay />{" "}
       </div>
 
       <div className="container mx-auto px-6 relative z-10 py-24">

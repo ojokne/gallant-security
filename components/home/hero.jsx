@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Clock, Users } from "lucide-react";
 // React Server Components
 import * as motion from "framer-motion/client";
+import HeroOverlay from "../common/hero-overlay";
 
 export default function Hero() {
   return (
@@ -19,7 +20,7 @@ export default function Hero() {
           sizes="(max-width: 768px) 100vw, 100vw"
           quality={50}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/60" />
+        <HeroOverlay />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 py-24 sm:py-32">
