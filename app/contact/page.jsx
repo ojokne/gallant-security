@@ -93,39 +93,23 @@ export default function ContactPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <div className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/contact/call-center.jpeg"
-            alt="Contact Gallant Security"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <HeroOverlay />
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10 py-24">
+      <div className="relative py-24 bg-muted">
+        <div className="container mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              ease: [0.04, 0.62, 0.23, 0.98],
-            }}
-            className="max-w-3xl"
+            variants={fadeInVariants}
+            initial="hidden"
+            animate="visible"
+            className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Get in Touch
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-8">
-              Contact our team for professional security solutions tailored to your needs.
+            <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+            <p className="text-muted-foreground">
+              Get in touch with our team for professional security solutions.
             </p>
           </motion.div>
         </div>
       </div>
 
-      {/* Contact Information */}
+      {/* Contact Form and Information Section */}
       <div className="py-24">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
