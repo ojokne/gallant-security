@@ -38,7 +38,7 @@ export default function Header() {
           className="flex items-center gap-2 transition-opacity hover:opacity-90"
         >
           <Image
-            src="/logo.png"
+            src="/gallant-security-8.png"
             alt="Gallant Security Logo"
             width={40}
             height={40}
