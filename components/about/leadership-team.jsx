@@ -8,7 +8,7 @@ import {
 } from "@/lib/animation-variants";
 
 const team = [
-  { name: "John Doe", position: "Managing Director", image: "/team/team1.jpg" },
+  { name: "John Doe", position: "Managing Director", image: "/team/ceo.jpeg" },
 ];
 
 export function LeadershipTeam() {

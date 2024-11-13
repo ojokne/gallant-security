@@ -20,7 +20,7 @@ export default function DirectorMessage() {
               className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg"
             >
               <Image
-                src="/testimonials/client1.jpg"
+                src="/team/ceo.jpeg"
                 alt="Director of Gallant Security"
                 fill
                 className="object-cover"
