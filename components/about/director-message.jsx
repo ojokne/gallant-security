@@ -20,10 +20,10 @@ export default function DirectorMessage() {
               className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg"
             >
               <Image
-                src="/team/ceo.jpeg"
+                src="/team/director.jpg"
                 alt="Director of Gallant Security"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
               />
             </motion.div>
 
