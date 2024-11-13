@@ -81,7 +81,7 @@ export default function ServicesPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <div className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
+      <div className="relative min-h-[calc(100vh-24rem)] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/services/services-hero.jpg"
