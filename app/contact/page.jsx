@@ -8,6 +8,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useToast } from "@/hooks/use-toast"
+
 import {
   Form,
   FormControl,
@@ -50,6 +52,7 @@ const contactInfo = [
 ];
 
 export default function ContactPage() {
+  const { toast } = useToast();
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -62,12 +65,27 @@ export default function ContactPage() {
 
   const onSubmit = async (data) => {
     try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      
       // Here you would typically send the data to your API
       console.log(data);
+      
+      // Show success message with the new variant
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you as soon as possible.",
+        variant: "success",
+      });
+      
       form.reset();
-      // Show success message
     } catch (error) {
-      // Handle error
+      // Show error message
+      toast({
+        title: "Something went wrong!",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
       console.error(error);
     }
   };
