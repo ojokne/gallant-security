@@ -124,7 +124,7 @@ export default function ContactPage() {
               <motion.div variants={itemVariants}>
                 <h2 className="text-2xl font-bold mb-4">Send us a Message</h2>
                 <p className="text-muted-foreground mb-6">
-                  Fill out the form below and we'll get back to you shortly.
+                  Fill out the form below and we&apos;ll get back to you shortly.
                 </p>
               </motion.div>
 
