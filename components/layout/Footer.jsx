@@ -20,7 +20,7 @@ export default function Footer() {
               <li><Link href="/about" className="text-sm hover:underline">About Us</Link></li>
               <li><Link href="/services" className="text-sm hover:underline">Services</Link></li>
               <li><Link href="/contact" className="text-sm hover:underline">Contact</Link></li>
-              <li><Link href="/careers" className="text-sm hover:underline">Careers</Link></li>
+              <li><Link href="/gallery" className="text-sm hover:underline">Careers</Link></li>
             </ul>
           </div>
 

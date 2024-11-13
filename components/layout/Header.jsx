@@ -3,12 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
-import { 
-  Sheet, 
-  SheetContent, 
+import {
+  Sheet,
+  SheetContent,
   SheetTrigger,
   SheetHeader,
-  SheetTitle, 
+  SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { VisuallyHidden } from "@/components/common/visually-hidden";
@@ -25,22 +25,22 @@ export default function Header() {
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Contact", href: "/contact" },
-    { label: "Careers", href: "/careers" },
+    { label: "Gallery", href: "/gallery" },
   ];
 
   return (
     <header className="border-b sticky top-0 bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60 z-50">
-            <ScrollProgressBar />
+      <ScrollProgressBar />
 
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="flex items-center gap-2 transition-opacity hover:opacity-90"
         >
-          <Image 
-            src="/logo.png" 
-            alt="Gallant Security Logo" 
-            width={40} 
+          <Image
+            src="/logo.png"
+            alt="Gallant Security Logo"
+            width={40}
             height={40}
             className="object-contain"
             priority
@@ -54,9 +54,9 @@ export default function Header() {
         <nav className="hidden md:flex items-center gap-2">
           <div className="flex items-center px-2 gap-6">
             {navItems.map((item) => {
-              const isActive = 
-                item.href === '/' 
-                  ? pathname === '/' 
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
                   : pathname.startsWith(item.href);
 
               return (
@@ -99,22 +99,17 @@ export default function Header() {
           <SheetContent side="right" className="w-[300px] sm:w-[400px] p-0">
             <SheetHeader>
               <SheetTitle>
-                <VisuallyHidden>
-                  Navigation Menu
-                </VisuallyHidden>
+                <VisuallyHidden>Navigation Menu</VisuallyHidden>
               </SheetTitle>
             </SheetHeader>
             <div className="h-full flex flex-col">
               {/* Mobile Menu Header */}
               <div className="p-6 border-b">
-                <Link 
-                  href="/" 
-                  className="flex items-center gap-2"
-                >
-                  <Image 
-                    src="/logo.png" 
-                    alt="Gallant Security Logo" 
-                    width={32} 
+                <Link href="/" className="flex items-center gap-2">
+                  <Image
+                    src="/logo.png"
+                    alt="Gallant Security Logo"
+                    width={32}
                     height={32}
                     className="object-contain"
                   />
@@ -128,9 +123,9 @@ export default function Header() {
               <nav className="flex-1 overflow-y-auto">
                 <div className="p-6">
                   {navItems.map((item) => {
-                    const isActive = 
-                      item.href === '/' 
-                        ? pathname === '/' 
+                    const isActive =
+                      item.href === "/"
+                        ? pathname === "/"
                         : pathname.startsWith(item.href);
 
                     return (
@@ -142,8 +137,8 @@ export default function Header() {
                           "flex items-center h-11 px-3",
                           "text-sm font-medium tracking-tight rounded-md transition-colors",
                           "hover:bg-accent/50",
-                          isActive 
-                            ? "text-primary bg-primary/5" 
+                          isActive
+                            ? "text-primary bg-primary/5"
                             : "text-muted-foreground hover:text-primary"
                         )}
                       >
@@ -156,14 +151,12 @@ export default function Header() {
 
               {/* Mobile Menu Footer */}
               <div className="p-6 border-t bg-muted/30">
-                <Button 
-                  asChild 
+                <Button
+                  asChild
                   className="w-full font-medium text-sm"
                   onClick={() => setOpen(false)}
                 >
-                  <Link href="/contact">
-                    Get Started
-                  </Link>
+                  <Link href="/contact">Get Started</Link>
                 </Button>
               </div>
             </div>
