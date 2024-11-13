@@ -1,10 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { containerVariants, itemVariants, fadeInVariants } from "@/lib/animation-variants";
+import HeroOverlay from "@/components/common/hero-overlay";
 
 const contactInfo = [
   {
@@ -33,17 +35,33 @@ export default function ContactPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <div className="relative py-24 bg-muted">
-        <div className="container mx-auto px-6">
+      <div className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/contact/call-center.jpeg"
+            alt="Contact Gallant Security"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <HeroOverlay />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10 py-24">
           <motion.div
-            variants={fadeInVariants}
-            initial="hidden"
-            animate="visible"
-            className="max-w-3xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              ease: [0.04, 0.62, 0.23, 0.98],
+            }}
+            className="max-w-3xl"
           >
-            <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-            <p className="text-muted-foreground">
-              Get in touch with our team for professional security solutions.
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Get in Touch
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              Contact our team for professional security solutions tailored to your needs.
             </p>
           </motion.div>
         </div>
